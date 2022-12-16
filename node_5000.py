@@ -3,6 +3,7 @@ import time
 import requests
 from urllib.parse import urlparse
 import json
+import hashlib
 from Blockchain import *
 
 
@@ -12,7 +13,7 @@ from Blockchain import *
 app = Flask(__name__)
 app.secret_key = "6b8aff760b701265494ae0d98a5058fa"
 
-node_address = "Person 5000"
+node_address = "d9729feb74992cc3482b350163a1a010"
 blockchain = Blockchain() # Creating a Blockchain
 # blockchain.add_node("http://127.0.0.1:5001/")
 
@@ -110,9 +111,9 @@ def add_new_transaction():
         return render_template("new_transaction.html")
     else: # request.method is "POST"
         """Transmit this new transaction to all the nodes""" # WORK TO DO HERE
-        sender = request.form["sender"]
-        reciever = request.form["reciever"]
-        amount = request.form["amount"]
+        sender = hashlib.sha256((request.form["sender"]).encode()).hexdigest()
+        reciever = hashlib.sha256((request.form["reciever"]).encode()).hexdigest()
+        amount = hashlib.sha256((request.form["amount"]).encode()).hexdigest()
         # Checking if any field in the form was empty
         if sender == "" or reciever == "" or amount == 0:
             flash("Required Fields not filled", category="danger")

@@ -17,7 +17,7 @@ class Blockchain():
 
         self.add_transaction({
             "sender": "Coinbase", 
-            "reciever": "Person 1", 
+            "reciever": "0284bb853a649751efbca489e6132b12", 
             "amount": 50
             })
         self.POW(previous_hash="0") # Genesis Block

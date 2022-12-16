@@ -12,7 +12,7 @@ from Blockchain import *
 app = Flask(__name__)
 app.secret_key = "6b8aff760b701265494ae0d98a5058fa"
 
-node_address = "Person 5001"
+node_address = "6226f7cbe59e99a90b5cef6f94f966fd"
 blockchain = Blockchain() # Creating a Blockchain
 # blockchain.add_node("http://127.0.0.1:5000/")
 
